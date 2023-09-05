@@ -1,6 +1,5 @@
 variable "env" {}
 variable "tags" {}
-variable "rabbitmq" {}
 variable "vpc_id" {}
 variable "ssh_ingress_cidr" {}
 variable "sg_ingress_cidr" {}
