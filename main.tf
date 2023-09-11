@@ -36,3 +36,11 @@ resource "aws_instance" "instance" {
   tags        = merge(local.tags, { Name = "${local.name_prefix}" })
   user_data = file("${path.module}/userdata.sh")
 }
+
+resource "aws_route53_record" "www" {
+  zone_id = var.zone_id
+  name    = "route53-${var.env}"
+  type    = "A"
+  ttl     = 300
+  records = [aws_instance.instance.private_ip]
+}
